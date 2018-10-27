@@ -1,0 +1,22 @@
+{
+  "name": "clipboard",
+  "version": "0.1.0",
+  "icons": {
+    "128": "imgs/clipboard-128.png",
+    "64": "imgs/clipboard-64.png",
+    "32": "imgs/clipboard-32.png"
+  },
+  "browser_action": {
+    "default_title": "Clipboard",
+    "default_icon": {
+      "32": "imgs/clipboard-32.png",
+      "24": "imgs/clipboard-24.png",
+      "16": "imgs/clipboard-16.png"
+    },
+    "default_popup": "release/index.html"
+  },
+  "default_locale": "zh_CN",
+  "description": "管理剪贴板数据",
+  "manifest_version": 2,
+  "minimum_chrome_version": "26.0"
+}
