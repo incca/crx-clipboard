@@ -111,5 +111,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/incca/crx-clipboard.git"
   }
 }
