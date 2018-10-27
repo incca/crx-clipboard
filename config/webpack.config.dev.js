@@ -231,6 +231,11 @@ module.exports = {
               cacheCompression: false,
             },
           },
+          {
+            test: /\.tsx?$/,
+            exclude: /node_modules/,
+            loader: 'awesome-typescript-loader',
+          },
           // Process any JS outside of the app with Babel.
           // Unlike the application JS, we only compile the standard ES features.
           {
