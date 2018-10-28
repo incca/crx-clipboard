@@ -1,6 +1,6 @@
 import * as React from 'react';
+import CodeContainer from './CodeContainer';
 import './index.less';
-import { number } from 'prop-types';
 
 interface State {
   types: string[];
@@ -35,7 +35,7 @@ class ClipboardCollector extends React.Component {
             types.map((type, index) => (
               <li key={type}>
                 {type}
-                <pre className={'clipboard-content'}> {details[index] || ''} </pre>
+                <CodeContainer value={details[index] || ''} type={type} />
               </li>
             ))
           }
