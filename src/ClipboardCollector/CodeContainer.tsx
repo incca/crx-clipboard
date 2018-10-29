@@ -24,5 +24,4 @@ export default (props: any) => {
               }}></CodeMirror>;
   }
   return <pre className="clipboard-content"> {value} </pre>;
-  
 }
