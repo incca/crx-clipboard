@@ -1,0 +1,27 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 120px;
+  border-right: 1px solid #eff0f5;
+}
+
+.sidebar-list {
+  margin: 32px 0 0;
+  padding: 0;
+  &>li {
+    user-select: none;
+    list-style: none;
+    cursor: pointer;
+    width: 80%;
+    margin: 20px auto;
+    font-size: 14px;
+    text-align: center;
+    color: #969696;
+    &.active {
+      cursor: default;
+      color: #009da6;
+    }
+  }
+}
