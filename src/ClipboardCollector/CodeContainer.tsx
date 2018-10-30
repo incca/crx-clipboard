@@ -2,10 +2,17 @@ import * as React from 'react';
 import {UnControlled as CodeMirror} from 'react-codemirror2';
 import { html } from 'js-beautify';
 
+
+import 'codemirror/mode/xml/xml';
+import 'codemirror/addon/fold/foldcode';
+import 'codemirror/addon/fold/foldgutter';
+import 'codemirror/addon/fold/brace-fold';
+import 'codemirror/addon/fold/xml-fold';
+import 'codemirror/addon/fold/comment-fold';
+
+
 import 'codemirror/lib/codemirror.css';
-import 'codemirror/theme/material.css';
-import 'codemirror/theme/neat.css';
-import 'codemirror/mode/htmlembedded/htmlembedded.js';
+import 'codemirror/addon/fold/foldgutter.css';
 
 export default (props: any) => {
   const { value, type } = props;
@@ -17,9 +24,10 @@ export default (props: any) => {
                 content_unformatted: false
               })}
               options={{
-                mode: 'htmlembedded',
-                theme: 'material',
+                mode: 'xml',
                 lineNumbers: true,
+                foldGutter: true,
+                gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
                 readOnly: true,
               }}></CodeMirror>;
   }
