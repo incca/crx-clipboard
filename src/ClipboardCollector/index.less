@@ -1,33 +1,8 @@
-#clipboard-collector {
-  height: 100px;
-  background: #eee;
-  outline: none;
-  position: relative;
-  max-height: 100px;
-  margin-left: 120px;
-  &::after {
-    content: '粘贴剪贴板数据';
-    position: absolute;
-    font-size: 20px;
-    color: #7e7e7e;
-    font-family: Arial, Helvetica, sans-serif;
-    display: inline-block;
-    height: 100px;
-    line-height: 100px;
-    width: 500px;
-    left: 50%;
-    text-align: center;
-    margin-left: -250px;
-    top: 0;
-  }
-}
-
 #clipboard-types {
   list-style: none;
   margin: 0;
   padding: 0;
   font-family: monospace;
-  margin-left: 120px;
   .clipboard-content {
     background-color: #f1f1f1;
     padding: 16px;
