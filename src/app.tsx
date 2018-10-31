@@ -1,6 +1,5 @@
 import * as React from "react";
 import Sidebar from './Sidebar';
-import ClipboardCollector from './ClipboardCollector';
 import RecentView from './RecentView';
 import './app.less';
 

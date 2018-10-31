@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getPasteShortcut } from '../utils';
-import ClipboardCollector from '../ClipboardCollector';
+import ClipboardContainer from '../components/ClipboardContainer';
 import './index.less';
 
 interface ClipboardData {
@@ -28,6 +28,9 @@ class RecentView extends React.Component {
   componentDidMount() {
     document.body.addEventListener('paste', this.pasteEventHandler);
   }
+  componentWillUnmount() {
+    document.body.removeEventListener('paste', this.pasteEventHandler);
+  }
   pasteEventHandler(event: ClipboardEvent) {
     event.preventDefault();
     const data = event.clipboardData;
@@ -40,15 +43,21 @@ class RecentView extends React.Component {
       },
     });
   }
-  componentWillUnmount() {
-    document.body.removeEventListener('paste', this.pasteEventHandler);
+  renderView() {
+    const {clipboardData} = this.state;
+    return (
+      <div className="recent">
+        <h1 className="title">详细内容</h1>
+        <ClipboardContainer {...clipboardData} />
+      </div>
+    );
   }
   render() {
     const {clipboardData} = this.state;
     return (
       clipboardData.types.length === 0
-        ? <section className="paste-tip">{getPasteShortcut()} 粘贴数据</section>
-        : <ClipboardCollector {...clipboardData} />
+        ? <div className="paste-tip">{getPasteShortcut()} 粘贴数据</div>
+        : this.renderView()
     );
   }
 };
