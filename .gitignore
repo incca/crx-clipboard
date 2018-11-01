@@ -22,4 +22,8 @@ yarn-error.log*
 
 # VSCode
 .vscode
+
+# release file
 /chrome/release/
+
+package-lock.json

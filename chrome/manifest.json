@@ -18,5 +18,6 @@
   "default_locale": "zh_CN",
   "description": "管理剪贴板数据",
   "manifest_version": 2,
-  "minimum_chrome_version": "26.0"
+  "minimum_chrome_version": "26.0",
+  "permissions": ["storage"]
 }
