@@ -51,3 +51,7 @@ export const clear = () => {
     return Promise.resolve(true);
   }
 };
+
+export const STORAGE_KEY = {
+  RECENT: 'recentData',
+};

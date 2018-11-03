@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getPasteShortcut } from '../utils';
 import ClipboardContainer from '../components/ClipboardContainer';
+import { getValue, setValue, STORAGE_KEY } from '../storage';
 import './index.less';
 
 interface ClipboardData {
@@ -24,6 +25,13 @@ class RecentView extends React.Component {
   constructor(props: Property) {
     super(props);
     this.pasteEventHandler = this.pasteEventHandler.bind(this);
+    getValue(STORAGE_KEY.RECENT).then((value) => {
+      if (value) {
+        this.setState({
+          clipboardData: value,
+        });
+      }
+    });
   }
   componentDidMount() {
     document.body.addEventListener('paste', this.pasteEventHandler);
@@ -36,6 +44,12 @@ class RecentView extends React.Component {
     const data = event.clipboardData;
     const types = data.types;
     const details = types.map((type) => data.getData(type));
+    if (types.length > 0) {
+      setValue(STORAGE_KEY.RECENT, {
+        types,
+        details,
+      });
+    }
     this.setState({
       clipboardData: {
         types,
