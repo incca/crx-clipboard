@@ -12,6 +12,10 @@ body {
   position: relative;
   overflow: auto;
   padding: 30px 10px 10px 30px;
+  transition: .2s;
+  &.expanded {
+    margin-left: 30px;
+  }
 }
 
 .developing-tip {
@@ -29,4 +33,50 @@ body {
   color: #394b51;
   font-weight: bold;
   font-size: 20px;
+}
+
+@font-face {font-family: "iconfont";
+  src: url('./resource/font/iconfont.eot?t=1541344790246'); /* IE9*/
+  src: url('./resource/font/iconfont.eot?t=1541344790246#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./resource/font/iconfont.ttf?t=1541344790246') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./resource/font/iconfont.svg?t=1541344790246#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-changjingguanli:before { content: "\eb61"; }
+
+.icon-zhunbeiliangchan:before { content: "\eb68"; }
+
+.icon-icon_renwujincheng:before { content: "\eb88"; }
+
+.icon-xiangshangzhanhang:before { content: "\ec0b"; }
+
+.view-switch-btn {
+  position: absolute;
+  display: block;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  cursor: pointer;
+  text-align: center;
+  line-height: 25px;
+  border: 1px solid #eff0f5;
+  background-color: #fff;
+  z-index: 2;
+  color: #5b5c6f;
+  bottom: 32px;
+  left: 120px - (25px / 2);
+  transform: rotateZ(-90deg);
+  transition: .2s;
+  &.to-expand {
+    transform: rotateZ(90deg);
+    left: 30px - (25px / 2);
+  }
 }

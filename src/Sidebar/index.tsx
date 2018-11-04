@@ -5,12 +5,13 @@ interface Property {
   items: SidebarItem[];
   activeItem: string;
   selectItem: (key: string) => void;
+  isExpanded: boolean;
 };
 
 const Sidebar = (props: Property) => {
-  const { items, activeItem, selectItem } = props;
+  const { items, activeItem, selectItem, isExpanded } = props;
   return (
-    <section className="sidebar">
+    <section className={"sidebar" + (isExpanded ? '' : ' collapsed')}>
       <ul className="sidebar-list">
         {
           items.map((item: SidebarItem) => {
