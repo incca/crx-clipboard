@@ -2,8 +2,10 @@ if (typeof chrome === 'undefined') {
   window.chrome = null;
 }
 
+const useChromeStorage = false;
+
 export const getValue = (key: string) => {
-  if (chrome && chrome.storage) {
+  if (useChromeStorage && chrome && chrome.storage) {
     return new Promise((resolve) => {
       chrome.storage.local.get(key, (value) => {
         resolve(value[key] ? JSON.parse(value[key]) : undefined);
@@ -20,7 +22,7 @@ export const setValue = (key: string, value: any) => {
     return Promise.resolve(true);
   }
   const valueStr = JSON.stringify(value);
-  if (chrome && chrome.storage) {
+  if (useChromeStorage && chrome && chrome.storage) {
     return new Promise((resolve) => {
       chrome.storage.local.set({[key]: valueStr}, () => resolve(true));
     });
@@ -31,7 +33,7 @@ export const setValue = (key: string, value: any) => {
 };
 
 export const remove = (key: string) => {
-  if (chrome && chrome.storage) {
+  if (useChromeStorage && chrome && chrome.storage) {
     return new Promise((resolve) => {
       chrome.storage.local.remove(key, () => resolve(true));
     });
@@ -42,7 +44,7 @@ export const remove = (key: string) => {
 }
 
 export const clear = () => {
-  if (chrome && chrome.storage) {
+  if (useChromeStorage && chrome && chrome.storage) {
     return new Promise((resolve) => {
       chrome.storage.local.clear(() => resolve(true));
     });
@@ -54,4 +56,5 @@ export const clear = () => {
 
 export const STORAGE_KEY = {
   RECENT: 'recentData',
+  SETTING: 'setting',
 };

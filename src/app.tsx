@@ -1,23 +1,36 @@
 import * as React from "react";
 import Sidebar from './Sidebar';
 import RecentView from './RecentView';
+import { getValue, setValue, STORAGE_KEY } from './storage';
 import './app.less';
 
 interface State {
   sidebarItems: SidebarItem[];
   activeItem: string;
-  isExpanded: boolean;
+  setting: AppSetting;
 };
 
 class App extends React.Component {
   state: State = {
     sidebarItems: [
-      {name: '最近数据', key: 'recent'},
-      {name: '历史管理', key: 'history'}
+      {name: '最近数据', key: 'recent', icon: 'icon-zhunbeiliangchan'},
+      {name: '历史管理', key: 'history', icon: 'icon-icon_renwujincheng'},
     ],
     activeItem: 'recent',
-    isExpanded: true,
+    setting: {
+      isExpanded: true,
+    },
   };
+  constructor(props: any) {
+    super(props);
+    getValue(STORAGE_KEY.SETTING).then((setting: AppSetting) => {
+      if (setting) {
+        this.setState({
+          setting,
+        });
+      }
+    });
+  }
   getView(activeItem: string) {
     switch(activeItem) {
       case 'recent': return (<RecentView />);
@@ -33,12 +46,16 @@ class App extends React.Component {
     });
   }
   toggleExpended() {
+    const { setting } = this.state;
+    setting.isExpanded = !setting.isExpanded;
     this.setState({
-      isExpanded: !this.state.isExpanded,
-    })
+      setting,
+    });
+    setValue(STORAGE_KEY.SETTING, setting);
   }
   render() {
-    const { sidebarItems, activeItem, isExpanded } = this.state;
+    const { sidebarItems, activeItem, setting } = this.state;
+    const { isExpanded } = setting;
     return (
       <React.Fragment>
         <Sidebar 

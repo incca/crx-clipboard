@@ -19,7 +19,8 @@ const Sidebar = (props: Property) => {
               key={item.key}
               className={item.key === activeItem ? 'active' : ''}
               onClick={() => selectItem(item.key)}
-            >{item.name}</li>;
+              title={isExpanded ? '' : item.name}
+            >{ isExpanded ? item.name : <span className={'iconfont ' + item.icon}></span>}</li>;
           })
         }
       </ul>
